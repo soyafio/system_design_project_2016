@@ -10,15 +10,17 @@ def run_turn():
 	r = rospy.Rate(1)
 	msg = Twist()
 
-	msg.linear.x = 0
-	msg.linear.y = 0
-	msg.linear.z = 1
+	msg.linear.x = 0.2
+	# +MAE -USIRO
+
+	msg.angular.z = -1
+	# +HIDARI -MIGI
 
 	while not rospy.is_shutdown():
 		
 		pub.publish(msg)
 		print "published"
-		msg.linear.x = msg.linear.x *(-1)
+		#msg.linear.x = msg.linear.x *(-1)
 		r.sleep()
 
 
