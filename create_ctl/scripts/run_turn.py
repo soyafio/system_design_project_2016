@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import rospy
+from time import sleep
 from geometry_msgs.msg import Twist
 
 def run_turn():
@@ -10,18 +11,24 @@ def run_turn():
 	r = rospy.Rate(1)
 	msg = Twist()
 
-	msg.linear.x = 0.2
+	msg.linear.x = 1
 	# +MAE -USIRO
 
-	msg.angular.z = -1
+	msg.angular.z = 0
 	# +HIDARI -MIGI
 
-	while not rospy.is_shutdown():
-		
-		pub.publish(msg)
-		print "published"
-		#msg.linear.x = msg.linear.x *(-1)
-		r.sleep()
+
+	msg3 = Twist()
+	msg3.angular.z = 0
+
+	r.sleep()
+	pub.publish(msg)
+	print "straight1"
+	sleep(3.2)
+
+	pub.publish(msg3)
+	print "stop"
+	r.sleep()
 
 
 if __name__ == '__main__':
