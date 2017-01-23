@@ -469,6 +469,7 @@ class Create2(object):
         """
         noError = True
         #sets lengths of notes
+        last_note = 1
         short_note = 8
         medium_note = 16
         long_note = 20
@@ -481,10 +482,10 @@ class Create2(object):
         
         #writes the song note commands to play_list
         #change these to change notes
-        play_list.extend([self.config.data['midi table']['C#4'],medium_note])
-        play_list.extend([self.config.data['midi table']['G4'],long_note])
-        play_list.extend([self.config.data['midi table']['A#3'],short_note])
-        play_list.extend([self.config.data['midi table']['A3'],short_note])
+        play_list.extend([self.config.data['midi table']['G6'],short_note])
+        play_list.extend([self.config.data['midi table']['F6'],short_note])
+        play_list.extend([self.config.data['midi table']['G6'],short_note])
+        play_list.extend([self.config.data['midi table']['F6'],last_note])
         
         #adds up the various commands and arrays
         song_play = [self.config.data['opcodes']['play'], current_song]

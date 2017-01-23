@@ -1,11 +1,11 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+import create2api
 import rospy
 from time import sleep
 from geometry_msgs.msg import Twist
 from ros_adder.msg import Adder
-
 
 class Roomba_runrun:
 
@@ -27,7 +27,7 @@ class Roomba_runrun:
 
 	def makoto(data):
 		soya = Roomba_runrun()
-		
+
 		if data.a == 1:   # 麻琴からreturn=1
 		soya.roomba_go(?,1,-2)
 
@@ -36,6 +36,17 @@ class Roomba_runrun:
 
 
 def main():
+
+	bot = create2api.Create2()
+
+	#Start the Create2
+	bot.start()
+
+	#Put the Create2 into 'safe' mode so we can drive it
+	bot.safe()
+
+	
+
 	soya = Roomba_runrun()
 
 	soya.roomba_go(3,1,0)

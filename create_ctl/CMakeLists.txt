@@ -47,8 +47,8 @@ find_package(catkin REQUIRED COMPONENTS
 ## Generate messages in the 'msg' folder
  add_message_files(
    FILES
-   adder.msg
- )
+  State.msg
+  )
 
 ## Generate services in the 'srv' folder
 # add_service_files(
@@ -187,3 +187,5 @@ include_directories(
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
+# add_executable(makoto src/makoto.cpp)
+# target_link_libraries(makoto ${catkin_LIBRARIES})

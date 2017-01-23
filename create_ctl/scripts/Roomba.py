@@ -14,7 +14,11 @@ bot.start()
 #Put the Create2 into 'safe' mode so we can drive it
 bot.safe()
 
-bot.digit_led_ascii('SOYA')
+bot.digit_led_ascii('VOOV')
+
+while True:
+	bot.play_test_sound()
+
 
 while True:
 #バンパの状態を延々と得る

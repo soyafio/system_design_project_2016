@@ -1,1 +1,1 @@
-unit8 a
+uint8 a
