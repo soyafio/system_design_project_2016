@@ -25,19 +25,20 @@ class Roomba_runrun:
 		#Start the Create2
 		self.bot.start()
 		#Put the Create2 into 'safe' mode so we can drive it
-		self.bot.safe()
+		self.bot.full()
 
 		# ルンバディスプレイへの文字表示
-		self.bot.digit_led_ascii('PPAP')
+		self.bot.digit_led_ascii('O_O ')
 
 		# マックのポテトの音を流し続ける
 #		while True:
 #			self.bot.play_test_sound()
 
-	def makoto_callback(data):
+	def makoto_callback(self,data):
 		# 受けとったmessageの中身をmodeに
+		print "subscribed %s"%data.state
 		self.sasaki_mode = data.state
-		self.sub.unregiter()
+		self.makoto_sub.unregister()
 
 	def subscribe_makoto(self):
 		self.makoto_sub = None
@@ -52,6 +53,7 @@ class Roomba_runrun:
 
 		if Right ==True or Left == True:
 			self.bot.drive(0,0)
+			self.bot.digit_led_ascii(' -_-')
 			print "collision"
 			return True
 		else:
@@ -63,7 +65,7 @@ class Roomba_runrun:
 		#turn right 90
 		if mode == 1: 
 			self.bot.drive(95, -1)
-			time.sleep(2)
+			time.sleep(1.7)
 		#turn right 45
 		elif mode == 2:
 			self.bot.drive(95, -1)
@@ -76,10 +78,11 @@ class Roomba_runrun:
 		# turn left 90
 		elif mode == 5:
 			self.bot.drive(95, 1)
-			time.sleep(2)
+			time.sleep(1.7)
 
 
 	def main(self):
+
 		# state 0 : go straight
 		print "start roomba"
 		r = rospy.Rate(2)
@@ -87,14 +90,15 @@ class Roomba_runrun:
 			if self.my_state == 0:
 				print "state %s"%self.my_state
 				self.bot.drive(250, 32767)
+				self.bot.digit_led_ascii('O_O ')
 				
 				if self.roomba_bumper() == True:
 					self.my_state = 1
 
 			elif self.my_state == 1:
 				print "state %s"%self.my_state
-				# self.subscribe_makoto()
-				#self.direction(self.sasaki_mode)
+				self.subscribe_makoto()
+				self.direction(self.sasaki_mode)
 				self.bot.drive(250, 32767)
 				self.my_state = 0
 				

@@ -14,9 +14,9 @@ bot.start()
 #Put the Create2 into 'safe' mode so we can drive it
 bot.safe()
 
-bot.drive(95, 1)
+#bot.drive(95, 1)
 
-bot.digit_led_ascii('ROOM')
+bot.digit_led_ascii(' O_O')
 
 #while True:
 #	bot.play_test_sound()
